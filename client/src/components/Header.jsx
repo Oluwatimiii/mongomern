@@ -3,12 +3,14 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   useEffect(() => {
     AOS.init();
   }, []);
 
+  const { currentUser } = useSelector((state) => state.user);
   const [mobileNav, setMobileNav] = useState(false);
 
   const openNav = () => {
@@ -31,7 +33,7 @@ const Header = () => {
       {/* Logo Div */}
       <div className="flex justify-between items-center w-full h-full max-w-[1200px] m-auto px-4 md:px-5 lg:px-6">
         <Link to="/">
-          <p className="pl-4 md:text-[14px] text-[18px] font-medium">MERN</p>
+          <p className="pl-4 md:text-[14px] text-1xl font-medium">MERN</p>
         </Link>
 
         {/* NavMenu Div */}
@@ -41,61 +43,37 @@ const Header = () => {
               <li>
                 <Link
                   to="/"
-                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
+                  className="md:ml-6 ml-10 text-sm text-1xl hover:font-bold hover:text-[#3671E9]"
                 >
-                  Products
+                  Home
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
-                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
+                  to="/about"
+                  className="md:ml-6 ml-10 text-sm text-1xl hover:font-bold hover:text-[#3671E9]"
                 >
                   About
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/profile"
                   className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
                 >
-                  Contact
+                  {currentUser ? "Profile" : "Sign In"}
                 </Link>
               </li>
-            </ul>
-          </div>
 
-          <div>
-            <ul className="md:flex md:items-center md:ml-20">
+              {/*
               <li>
                 <Link
-                  to="/"
-                  className="text-[16px] hover:font-bold hover:text-[#3671E9]"
+                  to="/signout"
+                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
                 >
-                  Login
+                  SignOut
                 </Link>
-              </li>
-              <li>
-                <Link to="/" className="ml-6 font-light w-2">
-                  |
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="ml-6 text-sm hover:bg-[#385285] py-[14px] px-[32px] rounded-[32px] bg-[#3671E9] ease-in-out duration-200"
-                >
-                  Products
-                </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -138,15 +116,7 @@ const Header = () => {
                     to="/"
                     className="text-[24px] mb-10 hover:font-bold hover:text-[#3671E9]"
                   >
-                    Products
-                  </Link>
-                </li>
-                <li className="mb-3">
-                  <Link
-                    to="/"
-                    className="text-[24px] hover:font-bold hover:text-[#3671E9]"
-                  >
-                    Features
+                    Home
                   </Link>
                 </li>
                 <li className="mb-3">
@@ -157,38 +127,30 @@ const Header = () => {
                     About
                   </Link>
                 </li>
-                <li>
+                <li className="mb-3">
                   <Link
                     to="/"
                     className="text-[24px] hover:font-bold hover:text-[#3671E9]"
                   >
-                    Contact
+                    Sign In
                   </Link>
                 </li>
-              </ul>
-
-              <ul className="flex items-center mt-10">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-[24px] hover:font-bold hover:text-[#3671E9]"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/" className="font-light w-2 p-4">
-                    |
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-[20px] hover:bg-[#385285] py-[10px] px-[24px] rounded-[32px] bg-[#3671E9] ease-in-out duration-200"
-                  >
-                    Products
-                  </Link>
-                </li>
+                {/* <li>
+                <Link
+                  to="/profile"
+                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
+                >
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/signout"
+                  className="md:ml-6 ml-10 text-sm hover:font-bold hover:text-[#3671E9]"
+                >
+                  SignOut
+                </Link>
+              </li> */}
               </ul>
             </div>
           </div>
